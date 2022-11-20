@@ -2,7 +2,7 @@ import './App.css';
 import { useState } from 'react';
 import olxlogo from './images/olxlogo.png';
 import Banner from './images/banner.jpg';
-import { Container, Box, requirePropFactory } from '@mui/material'
+import { Container, Box } from '@mui/material'
 import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 import { TextField } from '@mui/material';
@@ -12,8 +12,7 @@ import DirectionsCarFilledOutlinedIcon from '@mui/icons-material/DirectionsCarFi
 import AddIcon from '@mui/icons-material/Add';
 import { useEffect } from 'react';
 import { MenuItem } from '@mui/material';
-import { Paper, IconButton } from '@mui/material';
-import InputBase from '@mui/material/InputBase';
+import { IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import Grid from '@mui/material/Grid';
 import { Card, CardContent, CardMedia, Tooltip } from '@mui/material';
@@ -161,7 +160,7 @@ function App() {
 
   let searchCategoryItem = (value) => {
     SetSelectedCategory(value);
-    let filteredListItem = productList.filter((e) => e.category == value)
+    let filteredListItem = productList.filter((e) => e.category === value)
     setFilteredListItem([...filteredListItem])
     console.log(value)
   }
@@ -170,7 +169,7 @@ function App() {
   const [filteredListItem, setFilteredListItem] = useState([]);
 
   let searchProduct = (val) => {
-    let filteredList = productList.filter((e) => e.category ==
+    let filteredList = productList.filter((e) => e.category ===
       selectedCategory && e.title.toLowerCase().includes(val.toLowerCase()))
     setFilteredListItem([...filteredList])
   }
@@ -272,7 +271,7 @@ function App() {
         {/* App Bar End here */}
 
         {/* Banner */}
-        <Container sx={{ border: "1px solid black" }}>
+        <Container >
           <img
             style={{ width: "100%", margin: "25px 0" }}
             src={Banner} alt="banner" />
@@ -281,12 +280,12 @@ function App() {
 
 
         {/* grid  */}
-        <Grid container sx={{ border:"1px solid blue", display: "flex",justifyContent: "space-around" }}>
+        <Grid container sx={{ borderBottom: "1px solid grey", display: "flex", justifyContent: "space-around" }}>
           {/* <Container sx={{ border: "1px solid green",display:"flex"}}> */}
           {filteredListItem.map((e, i) => (
-            <Grid item xl={2} lg={2} md={3} sm={6} xs={12} m={1} key={i}>
+            <Grid item xl={3} lg={3} md={3} sm={4} xs={4} m={6} key={i}>
               <Card
-                sx={{ maxWidth: "350%", border: "1px solid blue" }}
+                sx={{ maxWidth: "350%", border: "1px solid #cecece",margin:"10px" }}
               >
                 <Box
                   display={"flex"}
@@ -333,19 +332,19 @@ function App() {
 
 
 
-        <Container styled={{ padding: 0 }}>
-          <Typography variant="h5" >Fresh recommendations</Typography>
+        <Container sx={{ padding: 0 , margin:1}}>
+          <Typography variant="h5" sx={{color: "black"}}>Fresh recommendations</Typography>
         </Container>
 
         {/* Mapping All Cards */}
-        <Grid container sx={{ justifyContent: "space-around"}}>
+        <Grid container sx={{display:"flex" ,justifyContent: "space-around" }}>
 
           {productList.map((e, i) => (
-            <Grid item xl={2} lg={2} md={2} sm={6} xs={12} m={1}
+            <Grid item xl={3} lg={3} md={3} sm={4} xs={4} s={6}
               key={i}
             >
               <Card
-                sx={{ maxWidth: 290 ,height:300 ,border:"1px solid blue" }}
+                sx={{ maxWidth: 290, height: 300, border: "1px solid #cecece",margin:"10px" }}
               >
                 <Box
                   display={"flex"}
